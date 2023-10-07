@@ -36,4 +36,4 @@ Make sure you have the following installed:
 1. Clone the repository to your local machine.
 
 ```bash
-git clone https://github.com/mysticmilan/library-management.git
+git clone https://github.com/Mysticmilan/Library-Management.git
