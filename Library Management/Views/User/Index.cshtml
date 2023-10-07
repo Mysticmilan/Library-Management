@@ -1,0 +1,54 @@
+﻿
+@model List<User>
+@{
+    int sn = 1;
+}
+<div class="d-flex justify-content-between">
+    <h2>User List</h2>
+    <a asp-action="Create" class="btn btn-success">Add User</a>
+</div>
+
+<table class="table mt-4">
+    <thead class="table-dark">
+        <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Faculty</th>
+            <th>User Type</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sn++)</td>
+                <td>@(item.Name)</td>
+                <td>@(item.Email)</td>
+                <td>@(item.Phone)</td>
+                <td>@(item.Faculty)</td>
+                <td>@(item.UserType)</td>
+                <td>
+                    <div class="d-flex" style="gap:10px">
+                        <a asp-action="Delete" asp-route-id="@(item.Id)" class="btn btn-danger">
+                            Delete
+                        </a>
+
+                        @* <form asp-action="Delete" mathod="POST">
+                    <input hidden value="@(item.Id)" name="id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </form> *@
+
+                        <form asp-action="Edit" method="GET">
+                            <input hidden value="@(item.Id)" name="id">
+                            <button type="submit" class="btn btn-warning">Update</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@model List<RequestBook>
+@{
+    int sn = 1;
+}
+<h2>Requested Books List</h2>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>SN</th>
+            <th>Book Name</th>
+            <th>Requested Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sn++)</td>
+                <td>@(item.Books.Name)</td>
+                <td>@(item.RequestDate)</td>
+                <td>
+                    <div class="d-flex" style="gap:10px">
+
+                        <a asp-action="ReqCancel" asp-route-id="@(item.Id)" class="btn btn-danger">
+                            Cancel Request
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
