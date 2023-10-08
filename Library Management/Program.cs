@@ -51,4 +51,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Index}/{id?}");
 
+//seed Database
+AppDbInitializer.Seed(app);
+
 app.Run();
