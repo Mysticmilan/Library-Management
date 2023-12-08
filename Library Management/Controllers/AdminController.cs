@@ -55,6 +55,7 @@ namespace Library_Management.Controllers
             reqCancelLog.Remarks = "Rejected By Admin.";
             reqCancelLog.CancelledDate = DateTime.Now;
             reqCancelLog.RequestBookID = reqBook.Id;
+            _context.RequestCancelledLogs.Add(reqCancelLog);
             _context.SaveChanges();
             return RedirectToAction("RequestedBookList", "Admin");
         }
@@ -86,6 +87,29 @@ namespace Library_Management.Controllers
             _context.SaveChanges();
             return RedirectToAction("ReturnBook", "Admin");
         }
+
+        [HttpGet]
+        public IActionResult EditProfile()
+        {
+            int? id = _contextAccessor.HttpContext.Session.GetInt32("userId");
+            User user = _context.Users.Where(x => x.Id == id).First();
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(User users, int id)
+        {
+            User value = _context.Users.Find(id);
+            value.Name = users.Name;
+            value.Email = users.Email;
+            value.Phone = users.Phone;
+            value.Password = users.Password;
+            value.Faculty = users.Faculty;
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Admin");
+        }
+
+
     }
 
 

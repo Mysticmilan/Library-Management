@@ -1,0 +1,28 @@
+﻿@model List<RequestCancelledLog>
+@{
+    int sn = 1;
+}
+
+<h2>Cancelled Books List</h2>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>SN</th>
+            <th>Book Name</th>
+            <th>Cancelled Date</th>
+            <th>Remarks</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sn++)</td>
+               <td>@(item.RequestBook.Books.Name)</td>
+                <td>@(item.CancelledDate)</td>
+                <td>@(item.Remarks)</td>
+            </tr>
+        }
+    </tbody>
+</table>

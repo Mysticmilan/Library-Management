@@ -1,0 +1,55 @@
+﻿@model List<Notice>
+@{
+    int sn = 1;
+}
+<div class="d-flex justify-content-between">
+    <h2>Notic List</h2>
+    <a asp-action="Create" class="btn btn-success">Add Notice</a>
+</div>
+
+<table class="table mt-4">
+    <thead class="table-dark">
+        <tr>
+            <th>SN</th>
+            <th>Title</th>
+            <th>Valid From</th>
+            <th>Valid Till</th>
+            <th>Details</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sn++)</td>
+                <td>@(item.Title)</td>
+                <td>@(item.ValidFrom)</td>
+                <td>@(item.ValidUntil)</td>
+                <td>
+                    <div>
+                        @Html.Raw(item.Details)
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex" style="gap:10px">
+                        <a asp-action="Delete" asp-route-id="@(item.Id)" class="btn btn-danger">
+                            Delete
+                        </a>
+
+                        @* <form asp-action="Delete" mathod="POST">
+                    <input hidden value="@(item.Id)" name="id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </form> *@
+
+                        <form asp-action="Edit" method="GET">
+                            <input hidden value="@(item.Id)" name="id">
+                            <button type="submit" class="btn btn-warning">Update</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

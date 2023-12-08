@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Library_Management.styles.css" asp-append-version="true" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 </head>
 <body>
     <header>
@@ -19,8 +20,8 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                       @*  <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        @*  <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li> *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Home</a>
@@ -41,14 +42,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Publications" asp-action="Index">Publications</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="RequestedBookList">Requested Books</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ReturnBook">Return Book</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Notice" asp-action="Index">Notice</a>
                         </li>
                     </ul>
 
@@ -71,7 +65,7 @@
 
     <footer class="border-top footer text-muted fixed-bottom">
         <div class="container">
-            &copy; 2023 - LibraSYS CodeKiro 
+            &copy; 2023 - LibraSYS CodeKiro
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

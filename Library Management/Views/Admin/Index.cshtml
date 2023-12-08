@@ -1,3 +1,56 @@
 ﻿@{
 }
-<h1>This is Admin's Home Page</h1>
+
+<style>
+    .card-title {
+        text-align: center;
+    }
+</style>
+<div class="row mt-5">
+    <div class="col-2">
+        <div class="card">
+            <a class="nav-link text-dark" asp-controller="Admin" asp-action="EditProfile">
+                <img src="~/Images/profile.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Profile</h5>
+                </div>
+            </a>  
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="card">
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">
+                <img src="~/Images/user.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">User</h5>
+                </div>
+            </a>
+           
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="card">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="RequestedBookList">
+                <img src="~/Images/request.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Requested Books</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="card">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ReturnBook">
+                <img src="~/Images/return.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Return Book</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+

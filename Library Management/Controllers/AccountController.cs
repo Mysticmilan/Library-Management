@@ -18,15 +18,15 @@ namespace Library_Management.Controllers
             return View();
         }
 
-        public IActionResult Login(string email,string password)
+        public IActionResult Login(string email, string password)
         {
-            if(email != "" && password != "")
+            if (email != "" && password != "")
             {
-                User userData = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password );
-                if(userData != null)
+                User userData = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+                if (userData != null)
                 {
                     _contextAccessor.HttpContext.Session.SetInt32("userId", userData.Id);
-                    _contextAccessor.HttpContext.Session.SetString("userType", userData.UserType.ToString()); 
+                    _contextAccessor.HttpContext.Session.SetString("userType", userData.UserType.ToString());
 
                     if (userData.UserType == EnumUserType.Admin)
                     {
@@ -34,25 +34,26 @@ namespace Library_Management.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index","Student");
+                        return RedirectToAction("Index", "Student");
                     }
                 }
                 TempData["ErrorMessage"] = "User Not Found!!";
                 return RedirectToAction("Index");
-
-
             }
+
             TempData["ErrorMessage"] = "Empty Fields!!";
             return RedirectToAction("Index");
         }
 
 
-        public IActionResult Logout() 
+        public IActionResult Logout()
         {
             _contextAccessor.HttpContext.Session.Remove("userId");
             _contextAccessor.HttpContext.Session.Remove("userType");
             _contextAccessor.HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
+
+
     }
 }

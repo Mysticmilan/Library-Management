@@ -74,7 +74,7 @@ namespace Library_Management.Controllers
             reqBook.RequestStatus = EnumRequestStatus.Cancelled;
             reqCancelLog.CancelledDate = DateTime.Now;
             reqCancelLog.RequestBookID = reqBook.Id;
-            reqCancelLog.Remarks = "Rejected By User.";
+            reqCancelLog.Remarks = "Cancelled By User.";
             _context.RequestCancelledLogs.Add(reqCancelLog);
             _context.SaveChanges();
             return RedirectToAction("MyRequestBook", "Student");
@@ -89,8 +89,18 @@ namespace Library_Management.Controllers
                 .Include(lentBook => lentBook.RequestBook.Books)
                 .ToList();
             return View(myLentBookList);
+        }
 
-
+        public IActionResult RejectHistory()
+        {
+            var userId = _contextAccessor.HttpContext.Session.GetInt32("userId");
+            var RejectBookList = _context.RequestCancelledLogs
+                .Where(RequestCancelledLog => RequestCancelledLog.RequestBook.UserId == userId && (RequestCancelledLog.RequestBook.RequestStatus == EnumRequestStatus.Rejected ||
+                RequestCancelledLog.RequestBook.RequestStatus == EnumRequestStatus.Cancelled))
+                .Include(RequestCancelledLog => RequestCancelledLog.RequestBook)
+                .Include(RequestCancelledLog => RequestCancelledLog.RequestBook.Books)
+                .ToList();
+            return View(RejectBookList);
         }
 
 
